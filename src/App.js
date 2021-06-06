@@ -1,91 +1,39 @@
 import React from 'react';
-
-const formFields = [
-  {
-    id: 'nome',
-    label: 'Nome',
-    type: 'text',
-  },
-  {
-    id: 'email',
-    label: 'Email',
-    type: 'email',
-  },
-  {
-    id: 'senha',
-    label: 'Senha',
-    type: 'password',
-  },
-  {
-    id: 'cep',
-    label: 'Cep',
-    type: 'text',
-  },
-  {
-    id: 'rua',
-    label: 'Rua',
-    type: 'text',
-  },
-  {
-    id: 'numero',
-    label: 'Numero',
-    type: 'text',
-  },
-  {
-    id: 'bairro',
-    label: 'Bairro',
-    type: 'text',
-  },
-  {
-    id: 'cidade',
-    label: 'Cidade',
-    type: 'text',
-  },
-  {
-    id: 'estado',
-    label: 'Estado',
-    type: 'text',
-  },
-];
+import Input from './Form/Input';
+import useForm from './Hooks/useForm';
 
 const App = () => {
-  const [form, setForm] = React.useState(
-    formFields.reduce((accumulator, currentValue) => {
-      return { ...accumulator, [currentValue.id]: '' };
-    }, {}),
-  );
-
-  const [response, setResponse] = React.useState(null);
+  const cep = useForm('cep');
+  const email = useForm('email');
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch('https://ranekapi.origamid.dev/json/api/usuario', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    }).then((response) => {
-      setResponse(response);
-    });
-  }
-
-  function handleChange({ target }) {
-    const { id, value } = target;
-    setForm({ ...form, [id]: value });
+    if (cep.validate()) {
+      console.log('Enviar');
+    } else {
+      console.log('Não enviar');
+    }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      {formFields.map(({ id, label, type }) => (
-        <div key={id}>
-          <label htmlFor={id}>{label}</label>
-          <input type={type} id={id} value={form[id]} onChange={handleChange} />
-        </div>
-      ))}
+      <Input
+        label="E-mail"
+        id="email"
+        type="email"
+        placeholder="example@email.com"
+        {...email}
+      />
+
+      <Input
+        label="CEP"
+        id="cep"
+        type="text"
+        placeholder="99999-999"
+        {...cep}
+      />
 
       <button>Enviar</button>
-      {response && response.ok && <p>Usuário Criado</p>}
     </form>
   );
 };

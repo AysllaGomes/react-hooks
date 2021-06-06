@@ -14,6 +14,9 @@ e este projeto é aderente ao [Versionamento Semântico](http://semver.org/spec/
     #### Fixed - for any bug fixes.
     #### Security - in case of vulnerabilities.
 -->
+## [1.0.0] - 2021-06-06
+### Added
+- Componentização do formulário. [@AysllaGomes](https://github.com/AysllaGomes).
 
 ## [1.0.0] - 2021-06-06
 ### Added
