@@ -3,12 +3,14 @@ import Input from './Form/Input';
 import useForm from './Hooks/useForm';
 
 const App = () => {
+  const nome = useForm();
   const cep = useForm('cep');
   const email = useForm('email');
+  const sobrenome = useForm(false);
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (cep.validate()) {
+    if (cep.validate() && email.validate() && nome.validate()) {
       console.log('Enviar');
     } else {
       console.log('Não enviar');
@@ -17,13 +19,8 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input
-        label="E-mail"
-        id="email"
-        type="email"
-        placeholder="example@email.com"
-        {...email}
-      />
+      <Input label="Nome" id="nome" type="text" {...nome} />
+      <Input label="Sobrenome" id="sobrenome" type="text" {...sobrenome} />
 
       <Input
         label="CEP"
@@ -31,6 +28,14 @@ const App = () => {
         type="text"
         placeholder="99999-999"
         {...cep}
+      />
+
+      <Input
+        label="E-mail"
+        id="email"
+        type="email"
+        placeholder="example@email.com"
+        {...email}
       />
 
       <button>Enviar</button>
