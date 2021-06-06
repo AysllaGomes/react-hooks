@@ -17,4 +17,8 @@ e este projeto é aderente ao [Versionamento Semântico](http://semver.org/spec/
 
 ## [1.0.0] - 2021-06-06
 ### Added
+- Criação de Hooks personalizados, afim de evitar repetição no código. [@AysllaGomes](https://github.com/AysllaGomes).
+
+## [1.0.0] - 2021-06-06
+### Added
 - Criação do Projeto baseado na documentação do React Hooks [@AysllaGomes](https://github.com/AysllaGomes).
