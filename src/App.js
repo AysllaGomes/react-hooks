@@ -1,5 +1,7 @@
 import React from 'react';
+import './App.css';
 import Slide from './Slide';
+import DogSvg from './DogSvg';
 
 const App = () => {
   const slides = [
@@ -19,6 +21,10 @@ const App = () => {
 
   return (
     <div>
+      <p className="fundo"></p>
+
+      <DogSvg color="#84e" />
+
       <Slide slides={slides} />
     </div>
   );
