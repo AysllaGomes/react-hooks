@@ -1,32 +1,21 @@
 import React from 'react';
 import './App.css';
-import Slide from './Slide';
-import DogSvg from './DogSvg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Sobre from './Sobre';
+import Header from './Header';
+import NaoEncontrado from './NaoEncontrado';
 
 const App = () => {
-  const slides = [
-    {
-      id: 'slide1',
-      text: 'Slide 1',
-    },
-    {
-      id: 'slide2',
-      text: 'Slide 2',
-    },
-    {
-      id: 'slide3',
-      text: 'Slide 3',
-    },
-  ];
-
   return (
-    <div>
-      <p className="fundo"></p>
-
-      <DogSvg color="#84e" />
-
-      <Slide slides={slides} />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="*" element={<NaoEncontrado />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
