@@ -2,10 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   function handleClick() {
     console.log('Fazer login');
+    navigate('/sobre');
   }
 
   return (
